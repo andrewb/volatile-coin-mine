@@ -72,7 +72,7 @@ S = (a, x, y, w, s, f) => {
   // Draw floor
   S('d', 0, 280, 1, 320)
   // Text will have the same fill as floor
-  c.fillText(s, 20, 20)
+  c.fillText(s, 10, 20)
   // Spawn every nth seconds
   if (u >= 1) {
     n.push({
