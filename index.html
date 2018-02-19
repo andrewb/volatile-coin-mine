@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Volatile Coin Mine - JS1k 2018</title>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica", sans-serif;
+      }
+      canvas {
+        image-rendering: pixelated;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" style="margin: auto; display: block;"></canvas>
+    <script>
+      // Approx. js1k shim
+      let canvas = document.getElementById('canvas');
+      let ctx = canvas.getContext('2d');
+      window.a = canvas;
+      window.b = document.body;
+      window.c = ctx;
+      window.d = document;
+      a.width = a.height = 320;
+    </script>
+    <script src="min.js"></script>
+  </body>
+</html>
