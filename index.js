@@ -106,7 +106,7 @@ S = (a, x, y, w, s, f) => {
       ? e.t ? (f.push(e), o = 0) : s++
       : f.push(e)
     // Draw
-    S(e.t ? 'g8g8' : 'xe2xe8xe2', e.x, e.y, 4, 5)
+    S(e.t ? 'g5eg4eg5' : 'xe2xeb2e2b2exe2', e.x, e.y, 4, 5)
   })
   // Re-assign entities
   n = f
