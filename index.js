@@ -101,7 +101,7 @@ S = (a, x, y, w, s, f) => {
     // IRL we'd want to remove out of bound entities, but that uses up bytes
     // e.g. if (e.x < 320 && e.x > -20)
     // Simple hit detection (also checks if game if player is alive)
-    x < e.x + 20 && x + 40 > e.x && y < e.y + 20 && 40 + y > e.y && o
+    x < e.x + 20 && x + 30 > e.x && y < e.y + 20 && 30 + y > e.y && o
       // Hit, game over if boulder, increment score if coin
       ? e.t ? (f.push(e), o = 0) : s++
       : f.push(e)
@@ -135,15 +135,15 @@ S = (a, x, y, w, s, f) => {
   // Draw player
   S(
     [
-      'x3d3x5dbx6b3x5bcx6bcx6c2x5ac2x6a2',
-      'x3d3x5dbx6b3x5bcx6cbx6c2xax3c3ax4a2',
-      'x3d3x5dbx6b3x5bcx5bc2x6c2x4ac4x3ax2a2',
+      'x2d3x3dbx4b3x3bcx4bcx4c2x3ac2x4a2',
+      'x2d3x3dbx4b3x3bcx4cbx4c2xaxc3ax2a2',
+      'x2d3x3dbx4b3x3bcx3bc2x4c2x2ac4xax2a2',
       // Jumping
-      'x4dx6d2x6dbx6b3x5bcx6bcx5c4x3a2x2a2',
+      'x3dx4d2x4dbx4b3x3bcx4bcx3c4xa2x2a2',
       // Standing
-      'x3d3x5b2x6b2x5bc2bx5bcbx5c2x6c2x6a2',
+      'x2d3x3b2x4b2x3bc2bx3bcbx3c2x4c2x4a2',
       // Dead
-      'x3b2x6b2x4b6x2b6x4b2x6b2x6b2x6b2'
+      'x2b2x4b2x2b9b3x2b2x4b2x4b2x4b2'
     ][
       // Ternary maddness
       // Equivalent to
@@ -164,7 +164,7 @@ S = (a, x, y, w, s, f) => {
     ],
     x,
     y,
-    8,
+    6,
     5,
     // v < 0 makes more sense, but k[37] packs better
     k[37]
