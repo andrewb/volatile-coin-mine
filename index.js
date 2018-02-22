@@ -1,37 +1,37 @@
-// Keys (k)
+// k = keys
 // Entities (n)
 k = n = []
-// Score (s)
-// Time (t)
-// Time since spawn (u)
-// Player x velocity (v)
-// Player y velocity (w)
-// Player x (x)
-// Player frame (z)
+// s = score
+// t = time
+// u = time since spawn
+// v = player x velocity
+// w = player y velocity
+// x = player x
+// z = player frame
 s = t = u = v = w = x = z = 0
-// Is player alive? (o)
+// o = Is player alive?
 o = 1
-// Player y (y)
+// y = player y
 y = 240
 // (S)prite
 // a = run length encoded string
-// x
-// y
+// x = sprite x
+// y = sprite y
 // w = width, i.e. rects in row
 // s = size of rect
-// f = flip
+// f = flip?
 S = (a, x, y, w, s, f) => {
-  // Column (q) and row (r)
+  // q = column, r = row
   q = r = 0
   for (i = 0; i < a.length; i++) {
     // Get color
-    // a = feet
-    // b = skin/tombstone
-    // c = body
-    // d = hair/ground
-    // e = coin
-    // f = background
-    // g = boulder
+    // 'a' = feet
+    // 'b' = skin/cross
+    // 'c' = body
+    // 'd' = hair/ground
+    // 'e' = coin
+    // 'f' = background
+    // 'g' = boulder
     h = '000fed00ff75fd5533976'.match(/.../g)[a[i].charCodeAt(0) - 97]
     // Use '+' instead of parseInt
     // Non-numeric chars will be NaN
@@ -57,6 +57,7 @@ S = (a, x, y, w, s, f) => {
   }
 }
 // (T)ick
+// e = timestamp
 (function T(e) {
   // Calculate delta
   // 1e3 is shorter than 1000
@@ -89,7 +90,6 @@ S = (a, x, y, w, s, f) => {
   // Render and update entities
   // IRL reduce would be a better choice, but map and pushing to a temp array
   // is less bytes
-  // Temp array
   f = []
   n.map(e => {
     // Gravity is 160
@@ -110,7 +110,6 @@ S = (a, x, y, w, s, f) => {
   })
   // Re-assign entities
   n = f
-
   // Update player
   // Jumping?
   if (o && k[32] && y == 240) {
