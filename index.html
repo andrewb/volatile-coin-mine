@@ -7,15 +7,13 @@
       body, html {
         margin: 0;
         padding: 0;
-        font-family: "Helvetica", sans-serif;
-      }
-      canvas {
-        image-rendering: pixelated;
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas" style="margin: auto; display: block;"></canvas>
+    <div style="display: flex; height: 100vh; justify-content: center; align-items: center;">
+      <canvas id="canvas" style="margin: auto; display: block;"></canvas>
+    </div>
     <script>
       // Approx. js1k shim
       let canvas = document.getElementById('canvas');
@@ -24,7 +22,7 @@
       window.b = document.body;
       window.c = ctx;
       window.d = document;
-      a.width = a.height = 320;
+      a.style.width = a.style.height = '320px';
     </script>
     <script src="min.js"></script>
   </body>

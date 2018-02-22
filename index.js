@@ -1,3 +1,7 @@
+// TOKEN_MAX_WIDTH and TOKEN_MAX_HEIGHT = 320
+a.width = a.height = 640
+// Scale for retina
+c.scale(2, 2)
 // k = keys
 // Entities (n)
 k = n = []
