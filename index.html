@@ -2,17 +2,60 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="author" content="Andrew Berry">
+    <meta name="description" content="JS1k 2018 demo: &quot;Coins and Boulders&quot; -- The mine is collapsing! Get the coins. Avoid the boulders.">
+    <link rel="canonical" href="https://mock.xyz/volatile-coin-mine/">
     <title>Volatile Coin Mine - JS1k 2018</title>
     <style>
       body, html {
         margin: 0;
         padding: 0;
+        font-family: "Helvetica", "Arial", sans-serif;
+        text-align: center;
+      }
+      a, a:visited {
+        color: #00f;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #000;
+      }
+      header {
+        margin-bottom: 1em;
+      }
+      em {
+        color: #666;
+        font-size: 0.8em;
+      }
+      kbd {
+        padding: 5px;
+        font-family: "Menlo", "Courier New", monospace;
+        font-size: 0.8em;
+        display: inline-block;
+        min-width: 1em;
+        background: #ddd;
+        border-bottom: 2px solid #ccc;
+        vertical-align: middle;
       }
     </style>
   </head>
   <body>
-    <div style="display: flex; height: 100vh; justify-content: center; align-items: center;">
-      <canvas id="canvas" style="margin: auto; display: block;"></canvas>
+    <div style="display: flex; min-height: 100vh; justify-content: center; align-items: center;">
+      <div>
+        <header>
+          <h1>Coins and Boulders</h1>
+          <em><a href="https://js1k.com/2018-coins/demo/3096">2018 JS1K Entry</a> &ndash; <a href="https://github.com/andrewb/volatile-coin-mine/blob/master/min.js">1017 bytes</a></em>
+        </header>
+        <section>
+          <canvas id="canvas"></canvas>
+        </section>
+        <section>
+          <p><a href="/volatile-coin-mine">Restart</a></p>
+          <p>Get coins. Avoid boulders.</p>
+          <p>Keys: <kbd class="key">Left</kbd> <kbd class="key">Right</kbd> <kbd class="key">Space Bar</kbd></p>
+          <p><small><a href="https://github.com/andrewb">Andrew Berry</a></small></p>
+        </section>
+      </div>
     </div>
     <script>
       // Approx. js1k shim
@@ -23,6 +66,14 @@
       window.c = ctx;
       window.d = document;
       a.style.width = a.style.height = '320px';
+    </script>
+    <script>
+      window.addEventListener("keydown", function(e) {
+        if (e.which === 32) {
+          // Stop space from scrolling the page
+          e.preventDefault();
+        }
+      });
     </script>
     <script src="min.js"></script>
   </body>
