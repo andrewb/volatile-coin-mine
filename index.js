@@ -127,9 +127,9 @@ S = (a, x, y, w, s, f) => {
   y += w * l
   x += v * l
   // Clamp to bounds (x)
-  // if (x > 280) x = 280
+  // if (x > 290) x = 290
   // if (x < 0) x = 0
-  x > 280 ? x = 280 : x < 0 ? x = 0 : x
+  x > 290 ? x = 290 : x < 0 ? x = 0 : x
   // Keep player above ground plane (y)
   if (y >= 240) {
     y = 240
