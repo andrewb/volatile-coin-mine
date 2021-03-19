@@ -25,9 +25,12 @@ y = 240
 // s = size of rect
 // f = flip?
 S = (a, x, y, w, s, f) => {
-  // q = column, r = row
-  q = r = 0
-  for (i = 0; i < a.length; i++) {
+  // decode string using regex and map over each character
+  // (\w)(\d+) would be better IRL, but all of the RLE sprites use single
+  // digits so we can save a character
+  [...a.replace(/(\w)(\d)/g, (_, q, r) => q.repeat(r))].map((j, i) => {
+    // q = column
+    q = i % w
     // Get color
     // 'a' = feet
     // 'b' = skin/cross
@@ -36,29 +39,18 @@ S = (a, x, y, w, s, f) => {
     // 'e' = coin
     // 'f' = background
     // 'g' = boulder
-    h = '000fed00ff75fd5533976'.match(/.../g)[a[i].charCodeAt(0) - 97]
-    // Use '+' instead of parseInt
-    // Non-numeric chars will be NaN
-    // Number of repeats
-    $ = +a[i + 1]
-    $ = $ ? (i++, $) : 1
-    for (j = 0; j < $; j++) {
-      c.fillStyle = '#' + h
-      h && c.fillRect(
-        // Get x coord for 'pixel'. If f is truthy, flip by rendering
-        // right to left
-        ~~(x + (f ? w - q - 1 : q) * s),
-        ~~(y + r * s),
-        s,
-        s
-      )
-      // Assign and test in one go...
-      if (++q == w) {
-        q = 0
-        r++
-      }
-    }
-  }
+    h = '000fed00ff75fd5533976'.match(/.../g)[j.charCodeAt(0) - 97]
+    c.fillStyle = '#' + h
+    h && c.fillRect(
+      // Get x coord for 'pixel'. If f is truthy, flip by rendering
+      // right to left
+      ~~(x + (f ? w - q - 1 : q) * s),
+      // Get y coord for 'pixel' (y + row * s)
+      ~~(y + ~~(i / w) * s),
+      s,
+      s
+    )
+  })
 }
 // (T)ick
 // e = timestamp
@@ -93,7 +85,7 @@ S = (a, x, y, w, s, f) => {
   }
   // Render and update entities
   // IRL reduce would be a better choice, but map and pushing to a temp array
-  // is less bytes
+  // is fewer bytes
   f = []
   n.map(e => {
     // Gravity is 160
