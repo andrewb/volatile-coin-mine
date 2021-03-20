@@ -132,6 +132,7 @@ S = (a, x, y, w, s, f) => {
     [
       'x2d3x3dbx4b3x3bcx4bcx4c2x3ac2x4a2',
       'x2d3x3dbx4b3x3bcx4cbx4c2xaxc3ax2a2',
+      'x3dx4d2x4dbx4b3x3bcx4bcx3c4xa2x2a2',
       'x2d3x3dbx4b3x3bcx3bc2x4c2x2ac4xax2a2',
       // Jumping
       'x3dx4d2x4dbx4b3x3bcx4bcx3c4xa2x2a2',
@@ -144,18 +145,18 @@ S = (a, x, y, w, s, f) => {
       // Equivalent to
       // if (o) {
       //   if (w) {
-      //     j = 3 // Jumping
+      //     j = 4 // Jumping
       //   }
       //   else if (v) {
-      //     j = ~~z % 3 // Walking
+      //     j = ~~z % 4 // Walking
       //   }
       //   if (o) {
-      //     j = 4 // Standing
+      //     j = 5 // Standing
       //   }
       // } else {
-      //   j = 5
+      //   j = 6
       // }
-      o ? w ? 3 : v ? ~~z % 3 : 4 : 5
+      o ? w ? 4 : v ? ~~z % 4 : 5 : 6
     ],
     x,
     y,
