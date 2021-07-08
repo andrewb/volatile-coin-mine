@@ -6,13 +6,12 @@ c.scale(2, 2)
 // Entities (n)
 k = n = []
 // s = score
-// t = time
 // u = time since spawn
 // v = player x velocity
 // w = player y velocity
 // x = player x
 // z = player frame
-s = t = u = v = w = x = z = 0
+s = u = v = w = x = z = 0
 // o = Is player alive?
 o = 1
 // y = player y
@@ -54,7 +53,7 @@ S = (a, x, y, w, s, f) => {
 }
 // (T)ick
 // e = timestamp
-(function T(e) {
+T = e => {
   // Calculate delta
   // 1e3 is shorter than 1000
   l = (e - t) / 1e3
@@ -150,7 +149,7 @@ S = (a, x, y, w, s, f) => {
       //   else if (v) {
       //     j = ~~z % 4 // Walking
       //   }
-      //   if (o) {
+      //   else {
       //     j = 5 // Standing
       //   }
       // } else {
@@ -166,7 +165,10 @@ S = (a, x, y, w, s, f) => {
     k[37]
   )
   requestAnimationFrame(T)
-})(0)
+}
+// Start loop
+// t = time
+T(t = 0)
 // x.type is 'keyup' or 'keydown'
 // x.type[5] is undefined on 'keyup'
 onkeyup = onkeydown = e => k[e.which] = e.type[5]
