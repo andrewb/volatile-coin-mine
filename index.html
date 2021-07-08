@@ -4,7 +4,13 @@
     <meta charset="utf-8" />
     <meta name="author" content="Andrew Berry">
     <meta name="description" content="JS1k 2018 demo: &quot;Coins and Boulders&quot; -- The mine is collapsing! Get the coins. Avoid the boulders.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="canonical" href="https://mock.xyz/volatile-coin-mine/">
+    <meta property="og:title" content="Volatile Coin Mine - JS1k 2018">
+    <meta property="og:description" content="JS1k 2018 demo: &quot;Coins and Boulders&quot; -- The mine is collapsing! Get the coins. Avoid the boulders.">
+    <meta property="og:image" content="https://mock.xyz/volatile-coin-mine/thumbnail.png">
+    <meta property="og:url" content="https://mock.xyz/volatile-coin-mine/">
     <title>Volatile Coin Mine - JS1k 2018</title>
     <style>
       body, html {
@@ -19,6 +25,11 @@
       }
       a:hover {
         color: #000;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       header {
         margin-bottom: 1em;
@@ -37,10 +48,64 @@
         border-bottom: 2px solid #ccc;
         vertical-align: middle;
       }
+      .touch-bar {
+        position: fixed;
+        bottom: 1.5rem;
+        width: 100%;
+      }
+      .touch-bar-wrap {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      #touch-jump,
+      #touch-stick {
+        height: 5rem;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 1.5rem;
+        line-height: 5rem;
+        border-radius: 2.5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      #touch-jump {
+        width: 7rem;
+      }
+      #touch-stick {
+        width: 14rem;
+        display: flex;
+        justify-content: space-around;
+      }
+      .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 16px solid #fff;
+        pointer-events: none;
+      }
+      .arrow-left {
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 16px solid #fff;
+        pointer-events: none;
+      }
+      .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 16px solid #fff;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
-    <div style="display: flex; min-height: 100vh; justify-content: center; align-items: center;">
+    <main>
       <div>
         <header>
           <h1>Coins and Boulders</h1>
@@ -50,11 +115,22 @@
           <canvas id="canvas"></canvas>
         </section>
         <section>
-          <p><a href="/volatile-coin-mine">Restart</a></p>
+          <p><a href="/volatile-coin-mine/">Restart</a></p>
           <p>Get coins. Avoid boulders.</p>
-          <p>Keys: <kbd class="key">Left</kbd> <kbd class="key">Right</kbd> <kbd class="key">Space Bar</kbd></p>
+          <p class="keymap">Keys: <kbd class="key">Left</kbd> <kbd class="key">Right</kbd> <kbd class="key">Space Bar</kbd></p>
           <p><small><a href="https://github.com/andrewb">Andrew Berry</a></small></p>
         </section>
+      </div>
+    </main>
+    <div class="touch-bar" style="display: none;">
+      <div class="touch-bar-wrap">
+        <div id="touch-jump" aria-label="jump">
+          <div class="arrow-up"></div>
+        </div>
+        <div id="touch-stick" aria-label="move">
+          <div class="arrow-left"></div>
+          <div class="arrow-right"></div>
+        </div>
       </div>
     </div>
     <script>
@@ -68,7 +144,7 @@
       a.style.width = a.style.height = '320px';
     </script>
     <script>
-      window.addEventListener("keydown", function(e) {
+      window.addEventListener('keydown', e => {
         if (e.which === 32) {
           // Stop space from scrolling the page
           e.preventDefault();
@@ -76,5 +152,6 @@
       });
     </script>
     <script src="min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/andrewb/js1k-touch-controls/min.js"></script>
   </body>
 </html>
