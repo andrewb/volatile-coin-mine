@@ -3,7 +3,7 @@ a.width = a.height = 640
 // Scale for retina
 c.scale(2, 2)
 // k = keys
-// Entities (n)
+// n = entities
 k = n = []
 // s = score
 // u = time since spawn
@@ -63,8 +63,6 @@ T = e => {
   // 10 * (e - t) / 1e3 becomes (e - t) / 100
   z += (e - t) / 100
   t = e
-  // Draw background
-  S('f', 0, 0, 1, 320)
   // Spawn every nth seconds
   if (u >= 1) {
     n.push({
@@ -99,6 +97,8 @@ T = e => {
     y = 240
     w = 0
   }
+  // Draw background
+  S('f', 0, 0, 1, 320)
   // Render and update entities
   // IRL reduce would be a better choice, but map and pushing to a temp array
   // is fewer bytes
