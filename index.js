@@ -163,7 +163,8 @@ T = e => {
   // Draw floor
   S('d', 0, 280, 1, 320)
   // Text will have the same fill as floor
-  c.fillText(s, 10, 20)
+  c.font = '2em monospace'
+  c.fillText(s, 10, 30)
   requestAnimationFrame(T)
 }
 // Start loop
