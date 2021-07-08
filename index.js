@@ -65,10 +65,6 @@ T = e => {
   t = e
   // Draw background
   S('f', 0, 0, 1, 320)
-  // Draw floor
-  S('d', 0, 280, 1, 320)
-  // Text will have the same fill as floor
-  c.fillText(s, 10, 20)
   // Spawn every nth seconds
   if (u >= 1) {
     n.push({
@@ -81,6 +77,27 @@ T = e => {
     })
     // Reset time since last spawn
     u = 0
+  }
+  // Update player
+  // Jumping?
+  if (o && k[32] && y == 240) {
+    w = -120
+  }
+  // Moving?
+  v = o && (k[37] || k[39]) ? k[37] ? -80 : 80 : 0
+  // Update y velocity
+  // Gravity is 160
+  w += 160 * l
+  y += w * l
+  x += v * l
+  // Clamp to bounds (x)
+  // if (x > 290) x = 290
+  // if (x < 0) x = 0
+  x > 290 ? x = 290 : x < 0 ? x = 0 : x
+  // Keep player above ground plane (y)
+  if (y >= 240) {
+    y = 240
+    w = 0
   }
   // Render and update entities
   // IRL reduce would be a better choice, but map and pushing to a temp array
@@ -105,27 +122,6 @@ T = e => {
   })
   // Re-assign entities
   n = f
-  // Update player
-  // Jumping?
-  if (o && k[32] && y == 240) {
-    w = -120
-  }
-  // Moving?
-  v = o && (k[37] || k[39]) ? k[37] ? -80 : 80 : 0
-  // Update y velocity
-  // Gravity is 160
-  w += 160 * l
-  y += w * l
-  x += v * l
-  // Clamp to bounds (x)
-  // if (x > 290) x = 290
-  // if (x < 0) x = 0
-  x > 290 ? x = 290 : x < 0 ? x = 0 : x
-  // Keep player above ground plane (y)
-  if (y >= 240) {
-    y = 240
-    w = 0
-  }
   // Draw player
   S(
     [
@@ -164,6 +160,10 @@ T = e => {
     // v < 0 makes more sense, but k[37] packs better
     k[37]
   )
+  // Draw floor
+  S('d', 0, 280, 1, 320)
+  // Text will have the same fill as floor
+  c.fillText(s, 10, 20)
   requestAnimationFrame(T)
 }
 // Start loop
